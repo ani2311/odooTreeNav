@@ -1,0 +1,34 @@
+#tree_nav {
+    min-width: 20em;
+    background-color: #7C7BAD;
+    height: 100vh;
+    display: block;
+}
+ul.easytree-container {
+    background-color: #7C7BAD;
+    border: none;
+    font-size: 1.1em;   
+}
+ul.o_menu_apps, ul.o_menu_sections li{
+    display: none;
+}
+
+ul.easytree-container .easytree-title {
+    color: white;
+}
+
+ul.easytree-container span.easytree-node:hover, 
+ul.easytree-container.easytree-focused span.easytree-node.easytree-active {
+    background-color: #6a69a2;
+    border:none;
+}
+
+@media screen and (max-width: 800px) {
+   #tree_nav {
+        display: none;
+    }
+    ul.o_menu_apps, ul.o_menu_sections li {
+        display: block;
+    }
+    
+}

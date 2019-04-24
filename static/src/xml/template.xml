@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="tree_nav.tree_nav" inherit_id="web.layout">
+  <!--       <xpath expr="//html//body//div[@class='o_main']" position="before">
+			 <nav id="tree_nav" class="tree_nav"></nav>
+        </xpath> -->
+        <xpath expr="//html//head" position="inside">
+            <script type="text/javascript">
+                odoo.define('tree_nav.web_client_tree_nav', function (require) {
+                    var WebClientWithTreeNav = require('tree_nav.WebClientWithTreeNav');
+                    var web_client_tree_nav = new WebClientWithTreeNav();
+                    $(function() {
+                        web_client_tree_nav.instanciate_menu_widgets();
+                    });
+                });
+                $(function(){
+                console.log('hey')
+                $.ajax({
+                    url: 'http://127.0.0.1:8069/web/dataset/call_kw/ir.ui.menu/load_menus',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {"lang": "zh_TW", "tz": false, "uid": 2},
+                    contentType: 'application/json',
+                    sucess: function(res){
+                        console.log(res);
+                    },
+                    error: function(xhr){
+                    console.log('failed');
+                    }
+                });
+                });
+            </script>
+        </xpath>
+    </template>
+    <template id="assets_backend_tree_nav" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/tree_nav/static/src/css/tree_nav.css"/>
+            <link rel="stylesheet" type="text/css" href="/tree_nav/static/src/css/ui.easytree.css"/>
+            <script type="text/javascript" src="/tree_nav/static/src/js/web_client_tree_nav.js"></script>
+            <script type="text/javascript" src="/tree_nav/static/src/js/jquery.easytree.min.js"></script>
+        </xpath>
+    </template>
+</odoo>
